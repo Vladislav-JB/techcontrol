@@ -1,31 +1,691 @@
 <!doctype html>
-<html lang="ru" data-stub>
+<html lang="ru">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Сайт TECHCONTROL – управление строительной техникой · демо готовится</title>
-<meta name="robots" content="noindex">
-<meta http-equiv="refresh" content="120">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TECHCONTROL · управление строительной техникой</title>
+<meta name="description" content="Закрываем потребность строительного объекта в механизации – от одной единицы до полного парка. Один объект. Один договор. Один ответственный.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TECHCONTROL · управление строительной техникой">
+<meta property="og:description" content="Один объект. Один договор. Один ответственный.">
+<meta property="og:url" content="https://web-atelie.ru/techcontrol/">
+<meta property="og:image" content="https://web-atelie.ru/techcontrol/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E0F11'/%3E%3Cpath d='M7 9h18v4h-7v12h-4V13H7z' fill='%23FF6B00'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Manrope:wght@400;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@1,700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F6F3EE;--ink:#1F1E1C;--muted:#6B655C;--acc:#8A6737}
-@media (prefers-color-scheme:dark){:root{--bg:#161615;--ink:#EDE7DC;--muted:#A9A195;--acc:#C9A66B}}
-*{box-sizing:border-box}html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;display:grid;place-items:center;padding:24px}
-main{max-width:560px;text-align:center;display:flex;flex-direction:column;gap:18px;align-items:center}
-.k{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);font-weight:600}
-h1{font:500 clamp(2rem,6vw,3rem)/1.1 "Cormorant Garamond",Georgia,serif;margin:0;text-wrap:balance}
-p{margin:0;color:var(--muted)}
-.bar{width:220px;height:3px;background:color-mix(in srgb,var(--acc) 20%,transparent);border-radius:3px;overflow:hidden}
-.bar i{display:block;height:100%;width:40%;background:var(--acc);animation:m 1.6s ease-in-out infinite}
-@keyframes m{0%{transform:translateX(-100%)}100%{transform:translateX(250%)}}
-@media (prefers-reduced-motion:reduce){.bar i{animation:none;width:60%}}
+:root{
+  --bg:#0D0E10; --bg2:#121417; --card:#17191D; --card2:#1D2025; --line:#2A2E34;
+  --ink:#F3F2EF; --soft:#A2A7AE; --mute:#6E747C;
+  --or:#FF6B00; --or2:#FF8A33; --or-ink:#120A02; --ok:#3CCB7F; --warn:#F5B83D; --bad:#FF5A4E; --info:#5AA9FF;
+  --r:14px; --wrap:1240px;
+  --fd:"Inter Tight",system-ui,sans-serif; --ft:"Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--ft);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--fd);margin:0;line-height:1.1;letter-spacing:-.02em}
+h2{font-size:clamp(28px,3.4vw,46px);font-weight:800}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 12px/1 var(--ft);letter-spacing:.14em;text-transform:uppercase;color:var(--or)}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--or)}
+.lead{color:var(--soft);font-size:18px;max-width:640px;margin:16px 0 0}
+:focus-visible{outline:2px solid var(--or);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 26px;border-radius:10px;border:1px solid transparent;font-weight:600;font-size:15px;text-decoration:none;cursor:pointer;white-space:nowrap;transition:background .2s,border-color .2s,transform .2s}
+.btn--or{background:var(--or);color:var(--or-ink)}
+.btn--or:hover{background:var(--or2);transform:translateY(-1px)}
+.btn--line{border-color:#3A3F46;color:var(--ink);background:rgb(255 255 255 / .02)}
+.btn--line:hover{border-color:var(--or);color:var(--or2)}
+svg.i{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.sec{padding:110px 0;position:relative}
+.sec--alt{background:var(--bg2)}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px 40px;margin-bottom:48px}
+.head h2{margin-top:14px;max-width:760px}
+
+/* появление при скролле */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.on{opacity:1;transform:none}
+
+/* шапка */
+.hdr{position:fixed;inset:0 0 auto;z-index:40;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.hdr.is-solid{background:rgb(13 14 16 / .9);backdrop-filter:blur(12px);border-color:var(--line)}
+.hdr__in{display:flex;align-items:center;gap:30px;height:76px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo__mark{width:36px;height:36px;border-radius:8px;background:var(--or);display:grid;place-items:center}
+.logo__mark svg{width:20px;height:20px;fill:var(--or-ink)}
+.logo b{display:block;font:800 18px/1 var(--fd);letter-spacing:.04em}
+.logo small{display:block;font-size:11px;color:var(--soft);margin-top:4px;letter-spacing:.02em}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{text-decoration:none;font-size:14px;color:#C9CCD1;padding:8px 11px;border-radius:8px}
+.nav a:hover{color:#fff;background:rgb(255 255 255 / .05)}
+.hdr .btn{padding:11px 18px}
+.burger{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--ink)}
+.mnav{display:none}
+
+/* первый экран */
+.hero{min-height:100vh;min-height:100svh;display:grid;align-items:center;position:relative;overflow:hidden;padding:120px 0 80px}
+.hero__img{position:absolute;inset:0 0 0 38%;}
+.hero__img img{width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.hero__img::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,rgb(13 14 16 / .75) 22%,rgb(13 14 16 / 0) 60%),linear-gradient(0deg,var(--bg) 0%,rgb(13 14 16 / 0) 30%)}
+.hero__grid{position:absolute;inset:0;background-image:linear-gradient(rgb(255 255 255 / .035) 1px,transparent 1px),linear-gradient(90deg,rgb(255 255 255 / .035) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(90deg,#000 0%,transparent 55%)}
+.hero__in{position:relative;z-index:2;max-width:680px}
+.hero h1{font-size:clamp(40px,6vw,82px);font-weight:800;margin:22px 0 0;text-transform:uppercase;letter-spacing:-.03em;line-height:.98}
+.hero h1 span{color:var(--or)}
+.hero .lead{font-size:clamp(17px,1.5vw,20px);color:#C6C9CE}
+.hero__cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.hero__stats{display:flex;flex-wrap:wrap;gap:16px 40px;margin-top:56px;padding-top:28px;border-top:1px solid var(--line);max-width:620px}
+.hero__stats b{display:block;font:800 30px/1 var(--fd)}
+.hero__stats span{font-size:13px;color:var(--soft)}
+
+/* проблема */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
+.pcard::after{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:var(--or);transition:width .35s}
+.pcard:hover{border-color:#3A3F46;transform:translateY(-4px)}
+.pcard:hover::after{width:100%}
+.pcard svg{color:var(--or);width:30px;height:30px;margin-bottom:20px}
+.pcard h3{font-size:20px;font-weight:700}
+.pcard p{margin:8px 0 0;color:var(--soft);font-size:15px}
+
+/* решение: схема */
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;align-items:stretch;position:relative}
+.node{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px 24px;margin:0 22px 0 0;text-align:left}
+.node:last-child{margin-right:0}
+.node:not(:last-child)::after{content:"";position:absolute;right:-23px;top:50%;width:23px;height:2px;background:linear-gradient(90deg,var(--or),rgb(255 107 0 / .3))}
+.node small{font:600 11px/1 var(--ft);letter-spacing:.14em;color:var(--mute);text-transform:uppercase}
+.node b{display:block;font:800 22px/1.15 var(--fd);margin:12px 0 8px;text-transform:uppercase}
+.node p{margin:0;font-size:14px;color:var(--soft)}
+.node--main{background:linear-gradient(160deg,#2A1606,#17191D 70%);border-color:var(--or)}
+.node--main b{color:var(--or)}
+.flow__note{margin-top:26px;color:var(--soft);font-size:15px}
+
+/* что входит */
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.scard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:border-color .25s,background .25s}
+.scard:hover{border-color:var(--or);background:var(--card2)}
+.scard span{font:700 13px/1 var(--fd);color:var(--or)}
+.scard h3{font-size:18px;font-weight:700;margin:22px 0 8px}
+.scard p{margin:0;color:var(--soft);font-size:14px}
+
+/* таймлайн */
+.tl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:0;position:relative;counter-reset:t}
+.tl::before{content:"";position:absolute;left:0;right:0;top:23px;height:2px;background:var(--line)}
+.tl__bar{position:absolute;left:0;top:23px;height:2px;background:var(--or);width:0;transition:width 2.4s cubic-bezier(.4,0,.2,1)}
+.tl.on .tl__bar{width:100%}
+.tl li{position:relative;padding-right:14px;counter-increment:t}
+.tl li::before{content:counter(t,decimal-leading-zero);display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--bg);border:2px solid var(--line);font:700 14px/1 var(--fd);position:relative;z-index:1;transition:border-color .3s,color .3s}
+.tl.on li::before{border-color:var(--or);color:var(--or)}
+.tl b{display:block;font:700 16px/1.25 var(--fd);margin:18px 0 6px}
+.tl span{font-size:13px;color:var(--soft);display:block}
+
+/* контроль */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.photo{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.photo img{width:100%;aspect-ratio:5/4;object-fit:cover}
+.photo figcaption{position:absolute;left:16px;bottom:16px;background:rgb(13 14 16 / .85);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--soft);backdrop-filter:blur(6px)}
+.photo figcaption b{color:var(--ink)}
+.checks{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.checks li{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-weight:500;font-size:15px}
+.checks li::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--or);flex:none;transform:rotate(45deg)}
+
+/* старший механик */
+.mech{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--card)}
+.mech__txt{padding:56px}
+.mech__txt h2{font-size:clamp(28px,3vw,40px);margin-top:14px}
+.mech ul{margin:26px 0 30px;padding:0;list-style:none;display:grid;gap:10px;color:#CDD0D4}
+.mech li{display:flex;gap:12px}
+.mech li svg{color:var(--or);width:20px;height:20px;margin-top:3px}
+.mech__img img{width:100%;height:100%;object-fit:cover;min-height:340px}
+
+/* поломка */
+.brk__tabs{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px;margin-bottom:34px}
+.brk__tabs button{background:none;border:0;padding:11px 20px;border-radius:9px;cursor:pointer;color:var(--soft);font-weight:600;font-size:14px}
+.brk__tabs button[aria-selected="true"]{background:var(--or);color:var(--or-ink)}
+.brk__flow{display:flex;align-items:stretch;gap:0}
+.bstep{flex:1;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 18px;position:relative;margin-right:28px;opacity:.35;transition:opacity .4s,border-color .4s,background .4s}
+.bstep:last-child{margin-right:0}
+.bstep:not(:last-child)::after{content:"→";position:absolute;right:-22px;top:50%;transform:translateY(-50%);color:var(--mute);font-weight:700}
+.bstep.is-on{opacity:1;border-color:#3A3F46}
+.bstep.is-now{border-color:var(--or);background:linear-gradient(160deg,#24150A,var(--card) 70%)}
+.bstep small{font:600 11px/1 var(--ft);letter-spacing:.12em;color:var(--mute)}
+.bstep b{display:block;font:800 17px/1.2 var(--fd);margin:10px 0 6px;text-transform:uppercase}
+.bstep--bad b{color:var(--bad)}
+.bstep--ok b{color:var(--ok)}
+.bstep p{margin:0;font-size:13px;color:var(--soft)}
+.brk__time{margin-top:22px;color:var(--soft);font-size:15px}
+.brk__time b{color:var(--ink)}
+
+/* дашборд */
+.dash{border:1px solid var(--line);border-radius:18px;background:#0B0C0E;overflow:hidden;box-shadow:0 40px 80px rgb(0 0 0 / .45)}
+.dash__bar{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--bg2);flex-wrap:wrap}
+.dash__bar b{font:800 14px/1 var(--fd);letter-spacing:.06em}
+.dash__bar span{font-size:13px;color:var(--soft)}
+.demo-tag{margin-left:auto;font:600 11px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase;color:var(--warn);border:1px dashed var(--warn);border-radius:6px;padding:6px 9px}
+.dash__kpi{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line)}
+.kpi{background:#0B0C0E;padding:20px}
+.kpi small{font-size:12px;color:var(--soft)}
+.kpi b{display:block;font:800 32px/1.1 var(--fd);margin-top:6px}
+.kpi i{display:block;height:4px;border-radius:2px;background:var(--line);margin-top:12px;overflow:hidden;font-style:normal}
+.kpi i::after{content:"";display:block;height:100%;width:var(--w);background:var(--c)}
+.dash__tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:760px}
+th{font-weight:600;font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;text-align:left;padding:12px 20px;border-bottom:1px solid var(--line)}
+td{padding:13px 20px;border-bottom:1px solid #1C1F23;color:#D5D7DA;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.st{display:inline-flex;align-items:center;gap:7px;font-size:13px}
+.st::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.st--ok{color:var(--ok)}.st--rep{color:var(--bad)}.st--way{color:var(--info)}.st--res{color:var(--warn)}
+.dash__note{padding:14px 20px;font-size:12.5px;color:var(--mute);border-top:1px solid var(--line)}
+
+/* техника */
+.eq{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.ecard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s}
+.ecard:hover{border-color:#3A3F46}
+.ecard img{aspect-ratio:7/5;object-fit:cover;width:100%;transition:transform .5s}
+.ecard:hover img{transform:scale(1.04)}
+.ecard__ph{overflow:hidden}
+.ecard__b{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.ecard h3{font-size:20px;font-weight:700}
+.ecard p{margin:0;color:var(--soft);font-size:14px;flex:1}
+.ecard button{align-self:flex-start;margin-top:8px;background:none;border:0;padding:0;color:var(--or);font-weight:600;cursor:pointer;font-size:14px}
+.ecard button:hover{color:var(--or2)}
+.eq-more{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:18px}
+.mini{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;cursor:pointer;text-align:left;transition:border-color .25s}
+.mini:hover{border-color:var(--or)}
+.mini svg{color:var(--or);margin-bottom:12px}
+.mini b{display:block;font:700 15px/1.25 var(--fd)}
+.mini span{font-size:12.5px;color:var(--or)}
+
+/* владельцам */
+.owners{display:grid;grid-template-columns:minmax(0,1.3fr) auto;gap:30px;align-items:center;background:linear-gradient(120deg,#22140A,#17191D 55%);border:1px solid #3A2614;border-radius:20px;padding:44px 48px}
+.owners h2{font-size:clamp(26px,2.8vw,38px)}
+.owners p{color:var(--soft);margin:12px 0 0;max-width:560px}
+
+/* форма */
+.formwrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.formwrap ul{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:16px}
+.formwrap li{display:flex;gap:14px;color:#CDD0D4}
+.formwrap li b{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:var(--card2);color:var(--or);font:700 13px/1 var(--fd);flex:none}
+.form{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px;display:grid;gap:16px}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+label{display:grid;gap:7px;font-size:13px;color:var(--soft)}
+label em{color:var(--or);font-style:normal}
+input,select,textarea{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:13px 14px;width:100%;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--or)}
+input.err,textarea.err{border-color:var(--bad)}
+textarea{min-height:96px;resize:vertical}
+.agree{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--soft)}
+.agree input{width:18px;height:18px;margin:1px 0 0;accent-color:var(--or);flex:none}
+.agree.err{color:var(--bad)}
+.form small{color:var(--mute);font-size:12.5px}
+.success{display:none;text-align:center;padding:40px 20px}
+.success.is-on{display:block}
+.success svg{width:56px;height:56px;color:var(--ok);margin:0 auto 18px}
+.success h3{font-size:24px}
+.success p{color:var(--soft);margin:10px 0 0}
+
+/* FAQ */
+.faq{max-width:860px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 0;font:700 18px/1.3 var(--fd);display:flex;justify-content:space-between;gap:20px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--or);font-size:24px;line-height:1;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{margin:0 0 22px;color:var(--soft)}
+
+/* финальный CTA */
+.final{position:relative;overflow:hidden;padding:120px 0}
+.final img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.32}
+.final::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--bg),rgb(13 14 16 / .4) 50%,var(--bg));z-index:1}
+.final .wrap{position:relative;z-index:2;text-align:center}
+.final h2{font-size:clamp(32px,4.4vw,60px);text-transform:uppercase}
+.final h2 span{color:var(--or)}
+.final p{color:#C6C9CE;margin:18px auto 34px;max-width:560px;font-size:18px}
+
+/* подвал */
+.foot{border-top:1px solid var(--line);background:#0A0B0D}
+.foot__top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;padding:56px 24px 36px}
+.foot h4{margin:0 0 14px;font:600 12px/1 var(--ft);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.foot nav{display:grid;gap:8px}
+.foot nav a,.foot__c a{text-decoration:none;color:#C9CCD1;font-size:14px}
+.foot nav a:hover,.foot__c a:hover{color:var(--or)}
+.foot__c{display:grid;gap:8px;font-size:14px;color:#C9CCD1}
+.foot p{color:var(--soft);font-size:14px;margin:14px 0 0;max-width:320px}
+.foot__bot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 24px;padding:18px 24px 30px;border-top:1px solid var(--line);color:var(--mute);font-size:13px}
+.foot__bot a{color:var(--soft)}
+.foot__demo{flex-basis:100%;font-size:12.5px}
+/* подпись разработчика в подвале: «Создан в «Веб-Ателье»» – одинаковая на всех сайтах, не менять */
+.foot__made{display:inline-block;white-space:nowrap;font-style:italic;font-size:14px;line-height:1.4;color:var(--soft);padding:.4em 0}
+.foot__made a{display:inline;margin:0 0 0 .3em;color:inherit;text-decoration:none;font-family:Calibri,"Carlito",sans-serif;font-weight:700;font-style:italic;font-size:1.12em}
+.foot__made a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:.18em}
+.foot__made img{display:inline-block;width:40px;height:52px;max-width:none;margin-left:.35em;vertical-align:-7px}
+
+@media (max-width:1180px){
+  .nav{display:none}
+  .burger{display:block}
+  .hdr .btn{margin-left:auto}
+  .mnav.is-on{display:flex;flex-direction:column;background:rgb(13 14 16 / .97);border-bottom:1px solid var(--line);padding:8px 24px 18px}
+  .mnav a{text-decoration:none;padding:12px 0;border-top:1px solid var(--line);font-weight:500}
+  .eq-more{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:1000px){
+  .grid3,.eq{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .split,.mech,.formwrap{grid-template-columns:minmax(0,1fr)}
+  .flow{grid-template-columns:minmax(0,1fr);gap:22px}
+  .node{margin:0}
+  .node:not(:last-child)::after{right:auto;left:40px;top:auto;bottom:-23px;width:2px;height:23px;background:linear-gradient(180deg,var(--or),rgb(255 107 0 / .3))}
+  .tl{grid-template-columns:minmax(0,1fr);gap:22px}
+  .tl::before{left:23px;right:auto;top:0;bottom:0;width:2px;height:auto}
+  .tl__bar{left:23px;top:0;width:2px!important;height:0;transition:height 2.4s cubic-bezier(.4,0,.2,1)}
+  .tl.on .tl__bar{height:100%}
+  .tl li{display:grid;grid-template-columns:48px minmax(0,1fr);column-gap:18px;padding:0}
+  .tl li::before{grid-row:span 2}
+  .tl b{margin:4px 0 2px}
+  .brk__flow{flex-direction:column;gap:22px}
+  .bstep{margin:0}
+  .bstep:not(:last-child)::after{content:"↓";right:auto;left:24px;top:auto;bottom:-22px;transform:none}
+  .dash__kpi{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .owners{grid-template-columns:minmax(0,1fr);padding:34px 28px}
+  .foot__top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .hero__img{inset:0}
+  .hero__img::before{background:linear-gradient(0deg,var(--bg) 8%,rgb(13 14 16 / .78) 55%,rgb(13 14 16 / .55))}
+}
+@media (max-width:640px){
+  .wrap{padding:0 18px}
+  .sec{padding:76px 0}
+  .head{margin-bottom:32px}
+  .hdr__in{height:66px;gap:12px}
+  .logo small{display:none}
+  .logo b{font-size:16px}
+  .logo__mark{width:32px;height:32px}
+  .hdr .btn{padding:10px 14px;font-size:13px}
+  .hero{padding:100px 0 56px}
+  .hero__cta .btn{flex:1 1 100%}
+  .hero__stats{gap:16px 28px}
+  .hero__stats b{font-size:24px}
+  .grid3,.grid4,.eq,.row,.checks{grid-template-columns:minmax(0,1fr)}
+  .eq-more{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dash__kpi{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpi:last-child{grid-column:span 2}
+  .mech__txt{padding:32px 24px}
+  .form{padding:22px}
+  .foot__top{grid-template-columns:minmax(0,1fr);padding:44px 18px 28px}
+  .foot__bot{padding:18px 18px 28px}
+  .brk__tabs{display:flex}
+  .brk__tabs button{flex:1;padding:11px 10px}
+}
+@media (max-width:360px){
+  .hdr .btn{padding:9px 11px;font-size:12px}
+  .logo b{font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
 </style>
 </head>
-<body><main>
-<div class="k">Демо-версия по вашему ТЗ</div>
-<h1>Сайт TECHCONTROL – управление строительной техникой</h1>
-<div class="bar" aria-hidden="true"><i></i></div>
-<p>Сайт сейчас собирается по вашему техническому заданию.<br>Будет готов сегодня к <b>10:32</b> – по этой же ссылке.</p>
-<p style="font-size:.85rem">Страница обновится сама.</p>
-</main></body></html>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 5 5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 4.5a3.2 3.2 0 0 1 0 6.3M18 14.2c1.8.8 3 2.7 3 5.8"/></symbol>
+  <symbol id="i-break" viewBox="0 0 24 24"><path d="M14.5 6.5a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3l7.5-7.5a4 4 0 0 0-5-5l2.5 2.5-1 2-2 1-2.5-2.5"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M10 9v6M14 9v6"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path d="M4 4l16 16"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6"/></symbol>
+  <symbol id="i-ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-roller" viewBox="0 0 24 24"><circle cx="6" cy="17" r="3"/><rect x="14" y="13" width="8" height="7" rx="3.5"/><path d="M9 17h5M8 14V8h6l3 5"/></symbol>
+  <symbol id="i-crane2" viewBox="0 0 24 24"><path d="M3 20h10M5 20l3-9h4l2 3h5a2 2 0 0 1 2 2v4h-6M10 11V6l9 2"/><circle cx="17" cy="20" r="1.5"/></symbol>
+  <symbol id="i-tele" viewBox="0 0 24 24"><path d="M3 18h12v-4l-2-3H6l-3 4zM9 11l9-7 2 2-8 6"/><circle cx="6" cy="19" r="1.5"/><circle cx="13" cy="19" r="1.5"/></symbol>
+  <symbol id="i-gen" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="11" rx="2"/><path d="M13 9l-3 4h4l-3 4M7 18v2M17 18v2"/></symbol>
+  <symbol id="i-comp" viewBox="0 0 24 24"><circle cx="8" cy="13" r="5"/><path d="M8 10v3l2 1.5M13 13h8v5H11M3 20h18"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></symbol>
+</svg>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hdr__in">
+    <a class="logo" href="#top" aria-label="TECHCONTROL – на главную">
+      <span class="logo__mark"><svg viewBox="0 0 20 20"><path d="M2 3h16v4h-6v11H8V7H2z"/></svg></span>
+      <span><b>TECHCONTROL</b><small>Управление строительной техникой</small></span>
+    </a>
+    <nav class="nav" aria-label="Меню">
+      <a href="#uslugi">Услуги</a><a href="#tehnika">Техника</a><a href="#kak">Как работаем</a><a href="#zakazchikam">Для заказчиков</a><a href="#vladelcam">Для владельцев</a><a href="#o-kompanii">О компании</a><a href="#kontakty">Контакты</a>
+    </nav>
+    <a class="btn btn--or" href="#raschet">Получить расчёт</a>
+    <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mnav"><svg class="i"><use href="#i-menu"/></svg></button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Меню на телефоне">
+    <a href="#uslugi">Услуги</a><a href="#tehnika">Техника</a><a href="#kak">Как работаем</a><a href="#zakazchikam">Для заказчиков</a><a href="#vladelcam">Для владельцев</a><a href="#o-kompanii">О компании</a><a href="#kontakty">Контакты</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero__img"><img src="assets/hero.webp" alt="Экскаватор на строительном объекте ночью" width="1600" height="1100" fetchpriority="high"></div>
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="hero__in">
+        <span class="eyebrow">Один объект · один договор · один ответственный</span>
+        <h1>Управление <span>строительной</span> техникой</h1>
+        <p class="lead">Закрываем потребность строительного объекта в механизации – от одной единицы до полного парка.</p>
+        <div class="hero__cta">
+          <a class="btn btn--or" href="#raschet">Получить расчёт</a>
+          <a class="btn btn--line" href="#kak">Как мы работаем</a>
+        </div>
+        <div class="hero__stats">
+          <div><b>1</b><span>договор на весь парк</span></div>
+          <div><b>24/7</b><span>диспетчеризация</span></div>
+          <div><b>12</b><span>видов техники</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--alt" id="zakazchikam">
+    <div class="wrap">
+      <div class="head rv"><div><span class="eyebrow">Проблема</span><h2>Ваша задача – строить. Наша – обеспечить механизацию.</h2></div></div>
+      <div class="grid3">
+        <div class="pcard rv"><svg class="i"><use href="#i-search"/></svg><h3>Поиск техники</h3><p>Часы на звонки по объявлениям, а нужная единица всё равно занята.</p></div>
+        <div class="pcard rv"><svg class="i"><use href="#i-users"/></svg><h3>Много подрядчиков</h3><p>Десяток договоров, счетов и контактов на одном объекте.</p></div>
+        <div class="pcard rv"><svg class="i"><use href="#i-break"/></svg><h3>Поломки</h3><p>Техника встаёт в самый неудобный момент, а ремонт затягивается.</p></div>
+        <div class="pcard rv"><svg class="i"><use href="#i-pause"/></svg><h3>Простои</h3><p>Бригада ждёт, график сдвигается, деньги уходят впустую.</p></div>
+        <div class="pcard rv"><svg class="i"><use href="#i-eye"/></svg><h3>Нет единого контроля</h3><p>Непонятно, сколько техника реально работала и в каком она состоянии.</p></div>
+        <div class="pcard rv"><svg class="i"><use href="#i-phone"/></svg><h3>Постоянные переговоры</h3><p>Прораб тратит день на телефон вместо стройки.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="reshenie">
+    <div class="wrap">
+      <div class="head rv"><div><span class="eyebrow">Решение</span><h2>Один объект. Один договор. Один ответственный.</h2></div></div>
+      <div class="flow rv">
+        <div class="node"><small>01</small><b>Заказчик</b><p>Ставит задачу: какой объём работ, сроки, площадка.</p></div>
+        <div class="node node--main"><small>02</small><b>TECHCONTROL</b><p>Подбирает, проверяет, мобилизует и контролирует технику. Отвечает за результат.</p></div>
+        <div class="node"><small>03</small><b>Парк техники</b><p>Проверенные собственники и операторы – под одним договором.</p></div>
+        <div class="node"><small>04</small><b>Строительный объект</b><p>Техника работает по графику, без простоев и лишних переговоров.</p></div>
+      </div>
+      <p class="flow__note rv">Вам не нужно искать и контролировать каждого подрядчика – это делаем мы.</p>
+    </div>
+  </section>
+
+  <section class="sec sec--alt" id="uslugi">
+    <div class="wrap">
+      <div class="head rv"><div><span class="eyebrow">Что входит</span><h2>Полный цикл управления механизацией</h2></div></div>
+      <div class="grid4">
+        <div class="scard rv"><span>01</span><h3>Подбор техники</h3><p>Под задачу, грунт, объём и сроки.</p></div>
+        <div class="scard rv"><span>02</span><h3>Проверка техники</h3><p>Состояние, документы, допуски операторов.</p></div>
+        <div class="scard rv"><span>03</span><h3>Мобилизация</h3><p>Доставка на объект к нужной дате.</p></div>
+        <div class="scard rv"><span>04</span><h3>Диспетчеризация</h3><p>Смены, загрузка и перемещения парка.</p></div>
+        <div class="scard rv"><span>05</span><h3>Технический контроль</h3><p>Моточасы, состояние, обслуживание.</p></div>
+        <div class="scard rv"><span>06</span><h3>Ремонт</h3><p>Диагностика и ремонт на площадке.</p></div>
+        <div class="scard rv"><span>07</span><h3>Замена</h3><p>Резервная единица, если ремонт затянулся.</p></div>
+        <div class="scard rv"><span>08</span><h3>Отчётность</h3><p>Факт работы и простоев – по каждой единице.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="kak">
+    <div class="wrap">
+      <div class="head rv"><div><span class="eyebrow">Как работает TECHCONTROL</span><h2>8 шагов от заявки до отчёта</h2></div></div>
+      <ol class="tl" id="tl">
+        <i class="tl__bar" aria-hidden="true"></i>
+        <li><b>Заявка</b><span>Объём, сроки, площадка</span></li>
+        <li><b>Расчёт</b><span>Парк и стоимость</span></li>
+        <li><b>Подбор</b><span>Техника и операторы</span></li>
+        <li><b>Проверка</b><span>Состояние и документы</span></li>
+        <li><b>Мобилизация</b><span>Доставка на объект</span></li>
+        <li><b>Контроль</b><span>Работа и моточасы</span></li>
+        <li><b>Ремонт / замена</b><span>Без остановки стройки</span></li>
+        <li><b>Отчёт</b><span>Факт по каждой единице</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec sec--alt" id="kontrol">
+    <div class="wrap split">
+      <figure class="photo rv"><img src="assets/control.webp" alt="Инженеры проверяют данные на планшете на объекте" width="1000" height="800" loading="lazy"><figcaption><b>Технический контроль</b> · проверка на площадке</figcaption></figure>
+      <div class="rv">
+        <span class="eyebrow">Контроль</span>
+        <h2 style="margin-top:14px">Контроль начинается там, где техника выходит на объект.</h2>
+        <ul class="checks">
+          <li>Выход техники</li><li>Моточасы</li><li>Техническое состояние</li><li>Простои</li>
+          <li>Операторы</li><li>Ремонт</li><li>Замена</li><li>Фактическая загрузка</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="o-kompanii">
+    <div class="wrap">
+      <div class="mech rv">
+        <div class="mech__txt">
+          <span class="eyebrow">Senior Mechanic</span>
+          <h2>Наш человек находится на объекте.</h2>
+          <p class="lead" style="font-size:16px">TECHCONTROL может направить собственного старшего механика для контроля технического состояния и работы механизации.</p>
+          <ul>
+            <li><svg class="i"><use href="#i-check"/></svg>Ежедневный осмотр техники до начала смены</li>
+            <li><svg class="i"><use href="#i-check"/></svg>Фиксация поломок и простоев в момент их появления</li>
+            <li><svg class="i"><use href="#i-check"/></svg>Решения по ремонту или замене – на месте</li>
+          </ul>
+          <a class="btn btn--or" href="#raschet">Обсудить объект</a>
+        </div>
+        <div class="mech__img"><img src="assets/mechanic.webp" alt="Оператор в кабине экскаватора на объекте" width="1000" height="800" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--alt" id="polomka">
+    <div class="wrap">
+      <div class="head rv"><div><span class="eyebrow">Если техника сломалась</span><h2>Поломка не останавливает стройку</h2></div></div>
+      <div class="brk rv">
+        <div class="brk__tabs" role="tablist" aria-label="Сценарий">
+          <button type="button" role="tab" aria-selected="true" data-s="repair">Ремонт на месте</button>
+          <button type="button" role="tab" aria-selected="false" data-s="swap">Замена техники</button>
+        </div>
+        <div class="brk__flow" id="brk"></div>
+        <p class="brk__time" id="brkTime"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="system">
+    <div class="wrap">
+      <div class="head rv"><div><span class="eyebrow">TECHCONTROL SYSTEM</span><h2>Весь парк объекта – на одном экране</h2><p class="lead">Прототип будущей системы для заказчика. Личный кабинет появится на следующем этапе.</p></div></div>
+      <div class="dash rv">
+        <div class="dash__bar"><b>TECHCONTROL SYSTEM</b><span>Объект: ЖК «Пример» · секция 2</span><span class="demo-tag">Демо-данные</span></div>
+        <div class="dash__kpi">
+          <div class="kpi"><small>Парк объекта</small><b>32</b><i style="--w:100%;--c:#5A6068"></i></div>
+          <div class="kpi"><small>Работает</small><b style="color:var(--ok)">27</b><i style="--w:84%;--c:var(--ok)"></i></div>
+          <div class="kpi"><small>В ремонте</small><b style="color:var(--bad)">2</b><i style="--w:6%;--c:var(--bad)"></i></div>
+          <div class="kpi"><small>В пути</small><b style="color:var(--info)">3</b><i style="--w:10%;--c:var(--info)"></i></div>
+          <div class="kpi"><small>Доступность</small><b>96%</b><i style="--w:96%;--c:var(--or)"></i></div>
+        </div>
+        <div class="dash__tbl">
+          <table>
+            <thead><tr><th>Техника</th><th>Статус</th><th>Моточасы</th><th>Объект</th><th>Оператор</th><th>Ремонт</th><th>Простой</th></tr></thead>
+            <tbody>
+              <tr><td>Экскаватор 22 т · №07</td><td><span class="st st--ok">Работает</span></td><td>1 284</td><td>Секция 2</td><td>Оператор А.</td><td>–</td><td>0 ч</td></tr>
+              <tr><td>Фронтальный погрузчик · №03</td><td><span class="st st--ok">Работает</span></td><td>962</td><td>Секция 1</td><td>Оператор Б.</td><td>–</td><td>0 ч</td></tr>
+              <tr><td>Самосвал 25 т · №12</td><td><span class="st st--way">В пути</span></td><td>3 410</td><td>База → секция 2</td><td>Водитель В.</td><td>–</td><td>–</td></tr>
+              <tr><td>Бульдозер · №02</td><td><span class="st st--rep">В ремонте</span></td><td>2 118</td><td>Секция 3</td><td>Оператор Г.</td><td>Гидравлика, до 18:00</td><td>3 ч</td></tr>
+              <tr><td>Автокран 50 т · №01</td><td><span class="st st--ok">Работает</span></td><td>744</td><td>Секция 2</td><td>Оператор Д.</td><td>–</td><td>0 ч</td></tr>
+              <tr><td>Каток · №05</td><td><span class="st st--res">Резерв</span></td><td>531</td><td>Площадка</td><td>–</td><td>–</td><td>–</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="dash__note">Все цифры на этом экране – демонстрационные и не отражают реальные данные.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--alt" id="tehnika">
+    <div class="wrap">
+      <div class="head rv"><div><span class="eyebrow">Техника</span><h2>Закрываем любую задачу механизации</h2></div><a class="btn btn--line rv" href="#raschet">Запросить подбор</a></div>
+      <div class="eq">
+        <article class="ecard rv"><div class="ecard__ph"><img src="assets/eq-excavator.webp" alt="Гусеничный экскаватор" width="700" height="500" loading="lazy"></div><div class="ecard__b"><h3>Экскаваторы</h3><p>Гусеничные и колёсные, от 5 до 40 т – котлованы, траншеи, планировка.</p><button type="button" data-eq="Экскаватор">Запросить технику →</button></div></article>
+        <article class="ecard rv"><div class="ecard__ph"><img src="assets/eq-loader.webp" alt="Фронтальный погрузчик на трале" width="700" height="500" loading="lazy"></div><div class="ecard__b"><h3>Погрузчики</h3><p>Фронтальные и мини-погрузчики для погрузки, перемещения грунта и материалов.</p><button type="button" data-eq="Погрузчик">Запросить технику →</button></div></article>
+        <article class="ecard rv"><div class="ecard__ph"><img src="assets/eq-dump.webp" alt="Экскаватор грузит самосвал" width="700" height="500" loading="lazy"></div><div class="ecard__b"><h3>Самосвалы</h3><p>Вывоз грунта и доставка сыпучих материалов, 15–40 т.</p><button type="button" data-eq="Самосвал">Запросить технику →</button></div></article>
+        <article class="ecard rv"><div class="ecard__ph"><img src="assets/eq-dozer.webp" alt="Бульдозер на площадке" width="700" height="500" loading="lazy"></div><div class="ecard__b"><h3>Бульдозеры</h3><p>Подготовка площадки, планировка и перемещение больших объёмов грунта.</p><button type="button" data-eq="Бульдозер">Запросить технику →</button></div></article>
+        <article class="ecard rv"><div class="ecard__ph"><img src="assets/eq-crane.webp" alt="Башенный кран над строящимся домом" width="700" height="500" loading="lazy"></div><div class="ecard__b"><h3>Краны</h3><p>Автокраны и башенные краны с операторами и допусками.</p><button type="button" data-eq="Кран">Запросить технику →</button></div></article>
+        <article class="ecard rv"><div class="ecard__ph"><img src="assets/eq-grader.webp" alt="Автогрейдер выравнивает основание" width="700" height="500" loading="lazy"></div><div class="ecard__b"><h3>Грейдеры</h3><p>Профилирование и выравнивание оснований дорог и площадок.</p><button type="button" data-eq="Грейдер">Запросить технику →</button></div></article>
+      </div>
+      <div class="eq-more">
+        <button class="mini rv" type="button" data-eq="Каток"><svg class="i"><use href="#i-roller"/></svg><b>Катки</b><span>Запросить →</span></button>
+        <button class="mini rv" type="button" data-eq="Манипулятор"><svg class="i"><use href="#i-crane2"/></svg><b>Манипуляторы</b><span>Запросить →</span></button>
+        <button class="mini rv" type="button" data-eq="Телескопический погрузчик"><svg class="i"><use href="#i-tele"/></svg><b>Телескопические погрузчики</b><span>Запросить →</span></button>
+        <button class="mini rv" type="button" data-eq="Генератор"><svg class="i"><use href="#i-gen"/></svg><b>Генераторы</b><span>Запросить →</span></button>
+        <button class="mini rv" type="button" data-eq="Компрессор"><svg class="i"><use href="#i-comp"/></svg><b>Компрессоры</b><span>Запросить →</span></button>
+        <button class="mini rv" type="button" data-eq="Другая техника"><svg class="i"><use href="#i-plus"/></svg><b>Другая техника</b><span>Запросить →</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="vladelcam" style="padding-bottom:0">
+    <div class="wrap">
+      <div class="owners rv">
+        <div><span class="eyebrow">Для владельцев техники</span><h2 style="margin-top:14px">У вас есть техника? Мы найдём ей работу.</h2><p>Загружаем технику на крупных объектах, берём на себя поиск заказчиков, документы и расчёты.</p></div>
+        <a class="btn btn--line" href="#raschet" data-owner>Стать партнёром</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="raschet">
+    <div class="wrap formwrap">
+      <div class="rv">
+        <span class="eyebrow">Заявка</span>
+        <h2 style="margin-top:14px">Получите расчёт механизации для вашего объекта</h2>
+        <ul>
+          <li><b>1</b>Оставьте заявку – это 2 минуты</li>
+          <li><b>2</b>Специалист уточнит объём, сроки и площадку</li>
+          <li><b>3</b>Пришлём расчёт парка и стоимости</li>
+        </ul>
+      </div>
+      <div class="form rv">
+        <form id="form" novalidate>
+          <div style="display:grid;gap:16px">
+            <div class="row">
+              <label>Имя <em>*</em><input name="name" autocomplete="name" required></label>
+              <label>Компания<input name="company" autocomplete="organization"></label>
+            </div>
+            <div class="row">
+              <label>Телефон <em>*</em><input name="phone" type="tel" autocomplete="tel" required placeholder="+7"></label>
+              <label>E-mail<input name="email" type="email" autocomplete="email"></label>
+            </div>
+            <label>Город / объект <em>*</em><input name="city" required placeholder="Например: Москва, ЖК на 3 секции"></label>
+            <div class="row">
+              <label>Какая техника нужна?
+                <select name="equipment" id="eqSel">
+                  <option value="">Выберите или опишите в комментарии</option>
+                  <option>Экскаватор</option><option>Погрузчик</option><option>Самосвал</option><option>Бульдозер</option><option>Кран</option><option>Грейдер</option><option>Каток</option><option>Манипулятор</option><option>Телескопический погрузчик</option><option>Генератор</option><option>Компрессор</option><option>Другая техника</option><option>Комплексно – весь парк</option>
+                </select>
+              </label>
+              <label>Количество<input name="qty" type="number" min="1" inputmode="numeric"></label>
+            </div>
+            <label>Комментарий<textarea name="comment" placeholder="Сроки, объём работ, особенности площадки"></textarea></label>
+            <label class="agree" id="agreeL"><input type="checkbox" name="agree" id="agree"><span>Я согласен на обработку персональных данных.</span></label>
+            <button class="btn btn--or" type="submit">Получить расчёт</button>
+            <small>В демо форма никуда не отправляет данные. На рабочем сайте заявка сохраняется, уходит в CRM и в Telegram менеджеру.</small>
+          </div>
+        </form>
+        <div class="success" id="success" role="status">
+          <svg class="i"><use href="#i-ok"/></svg>
+          <h3>Спасибо! Заявка принята.</h3>
+          <p>Специалист TECHCONTROL свяжется с вами.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--alt" id="faq">
+    <div class="wrap">
+      <div class="head rv"><div><span class="eyebrow">FAQ</span><h2>Частые вопросы</h2></div></div>
+      <div class="faq rv">
+        <details><summary>Чем вы отличаетесь от аренды спецтехники?</summary><p>Аренда даёт машину. Мы отвечаем за механизацию объекта целиком: подбор, проверку, доставку, контроль, ремонт и замену – по одному договору.</p></details>
+        <details><summary>Можно заказать одну единицу техники?</summary><p>Да. Работаем и с одной машиной, и с полным парком объекта.</p></details>
+        <details><summary>Что будет, если техника сломается?</summary><p>Механик фиксирует поломку, мы организуем ремонт на месте или меняем технику на резервную, чтобы работы не останавливались.</p></details>
+        <details><summary>Как вы контролируете работу техники?</summary><p>Учитываем выход на смену, моточасы, техническое состояние и простои по каждой единице. Отчёт – регулярно, в удобном формате.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" id="kontakty">
+    <img src="assets/site.webp" alt="" width="1400" height="800" loading="lazy">
+    <div class="wrap rv">
+      <span class="eyebrow">TECHCONTROL</span>
+      <h2 style="margin-top:16px">Стройте. <span>Механизацию</span> берём на себя.</h2>
+      <p>Расскажите об объекте – подготовим расчёт парка и стоимости.</p>
+      <a class="btn btn--or" href="#raschet">Получить расчёт</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__top" style="padding-left:24px;padding-right:24px">
+    <div>
+      <a class="logo" href="#top"><span class="logo__mark"><svg viewBox="0 0 20 20"><path d="M2 3h16v4h-6v11H8V7H2z"/></svg></span><span><b>TECHCONTROL</b><small>Управление строительной техникой</small></span></a>
+      <p>Один объект. Один договор. Один ответственный.</p>
+    </div>
+    <div><h4>Меню</h4><nav aria-label="Подвал"><a href="#uslugi">Услуги</a><a href="#tehnika">Техника</a><a href="#kak">Как работаем</a><a href="#zakazchikam">Для заказчиков</a><a href="#vladelcam">Для владельцев</a></nav></div>
+    <div><h4>Контакты</h4><div class="foot__c"><a href="tel:+79000000000">+7 (900) 000-00-00</a><a href="#raschet">info@example.ru</a><span>Telegram · WhatsApp</span></div></div>
+  </div>
+  <div class="wrap foot__bot">
+    <span>© TECHCONTROL 2026 · <a href="#top">Политика конфиденциальности</a></span>
+    <span class="foot__made">Создан в <a href="https://web-atelie.ru/" target="_blank" rel="noopener">«Веб-Ателье»</a><img src="assets/web-atelie.png" alt="" width="40" height="52" loading="lazy" decoding="async"></span>
+    <span class="foot__demo">Демо главной страницы по техническому заданию. Контакты и данные панели условные, фото – из стоковой библиотеки.</span>
+  </div>
+</footer>
+
+<script>
+// шапка
+const hdr=document.getElementById('hdr');
+const solid=()=>hdr.classList.toggle('is-solid',scrollY>20);solid();addEventListener('scroll',solid,{passive:true});
+const burger=document.querySelector('.burger'),mnav=document.getElementById('mnav');
+burger.onclick=()=>{const on=mnav.classList.toggle('is-on');burger.setAttribute('aria-expanded',on);hdr.classList.add('is-solid')};
+mnav.querySelectorAll('a').forEach(a=>a.onclick=()=>{mnav.classList.remove('is-on');burger.setAttribute('aria-expanded',false)});
+// появление при скролле
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv,#tl').forEach(el=>io.observe(el));
+// поломка
+const S={
+  repair:{steps:[['bad','Поломка','Техника остановилась'],['','Фиксация','Механик на месте фиксирует проблему'],['','Диагностика','Причина и срок ремонта'],['','Ремонт','Ремонт на площадке'],['ok','Возврат в работу','Техника снова на смене']],time:'Простой объекта – <b>только на время ремонта</b>, без поиска нового подрядчика.'},
+  swap:{steps:[['bad','Поломка','Ремонт займёт больше смены'],['','Замена техники','Резервная единица выезжает на объект'],['ok','Работа продолжается','Стройка идёт по графику']],time:'Если ремонт затягивается, <b>меняем технику</b> – график объекта не сдвигается.'}
+};
+const brk=document.getElementById('brk'),brkTime=document.getElementById('brkTime');let timer;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function play(k){
+  clearInterval(timer);const s=S[k];
+  brk.innerHTML=s.steps.map((x,i)=>`<div class="bstep${x[0]?' bstep--'+x[0]:''}"><small>ШАГ ${i+1}</small><b>${x[1]}</b><p>${x[2]}</p></div>`).join('');
+  brkTime.innerHTML=s.time;
+  const els=[...brk.children];let n=0;
+  const step=()=>{els.forEach((e,i)=>{e.classList.toggle('is-on',i<=n);e.classList.toggle('is-now',i===n)});n++;if(n>=els.length)clearInterval(timer)};
+  if(reduce){n=els.length-1;step();return}
+  step();timer=setInterval(step,900);
+}
+document.querySelectorAll('.brk__tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.brk__tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));play(b.dataset.s)});
+play('repair');clearInterval(timer);
+const bio=new IntersectionObserver(es=>{if(es[0].isIntersecting){play('repair');bio.disconnect()}},{threshold:.4});bio.observe(document.querySelector('.brk'));
+// «Запросить технику» → форма
+const eqSel=document.getElementById('eqSel'),form=document.getElementById('form');
+document.querySelectorAll('[data-eq]').forEach(b=>b.onclick=()=>{eqSel.value=b.dataset.eq;document.getElementById('raschet').scrollIntoView({behavior:reduce?'auto':'smooth'});setTimeout(()=>form.name.focus({preventScroll:true}),600)});
+document.querySelector('[data-owner]').addEventListener('click',()=>{form.comment.value='Хочу стать партнёром: у меня есть техника (тип, количество): ';});
+// форма
+form.addEventListener('submit',e=>{
+  e.preventDefault();let bad=false;
+  ['name','phone','city'].forEach(n=>{const el=form[n];const no=!el.value.trim()||(n==='phone'&&el.value.replace(/\D/g,'').length<10);el.classList.toggle('err',no);bad=bad||no});
+  const ag=document.getElementById('agree');document.getElementById('agreeL').classList.toggle('err',!ag.checked);bad=bad||!ag.checked;
+  if(bad){form.querySelector('.err')?.focus?.();return}
+  form.hidden=true;document.getElementById('success').classList.add('is-on');
+});
+</script>
+</body>
+</html>
