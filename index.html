@@ -321,9 +321,19 @@ textarea{min-height:96px;resize:vertical}
   .brk__tabs{display:flex}
   .brk__tabs button{flex:1;padding:11px 10px}
 }
-@media (max-width:360px){
+@media (max-width:440px){
+  .hdr__in{gap:8px}
+  .logo{gap:8px}
+  .logo__mark{width:28px;height:28px}
+  .logo__mark svg{width:16px;height:16px}
+  .logo b{font-size:14px;letter-spacing:.02em}
   .hdr .btn{padding:9px 11px;font-size:12px}
-  .logo b{font-size:14px}
+  .burger{padding:4px}
+  .eyebrow{font-size:10.5px;letter-spacing:.08em;gap:8px}
+  .eyebrow::before{width:14px}
+}
+@media (max-width:350px){
+  .logo__mark{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
